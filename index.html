@@ -37,10 +37,10 @@
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
   .tab-btn {
-    flex: 1; padding: 13px 4px 11px; font-size: 11px; font-weight: 500;
+    flex: 1; padding: 11px 2px 9px; font-size: 10px; font-weight: 500;
     border: none; background: transparent; color: var(--text2);
     cursor: pointer; border-bottom: 2px solid transparent;
-    display: flex; align-items: center; justify-content: center; gap: 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
   }
   .tab-btn.active { color: var(--text); border-bottom-color: var(--text); }
   .tab-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
@@ -82,12 +82,23 @@
   .month-title { font-size: 14px; font-weight: 500; }
 
   .semaforo-bar {
-    display: flex; gap: 10px; align-items: center;
+    display: flex; flex-direction: column; gap: 8px;
     padding: 12px 14px; border-radius: var(--radius-lg);
     border: 0.5px solid var(--border); background: var(--bg);
     margin-bottom: 1rem;
   }
+  .semaforo-top { display: flex; gap: 10px; align-items: center; }
   .semaforo-dot { width: 13px; height: 13px; border-radius: 50%; flex-shrink: 0; }
+
+  .hero-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 18px 18px 16px;
+    margin-bottom: 1rem; border-left: 4px solid var(--green);
+  }
+  .hero-label { font-size: 12px; color: var(--text2); margin-bottom: 4px; display:flex; align-items:center; gap:6px; }
+  .hero-amount { font-size: 34px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+  .hero-sub { font-size: 12px; color: var(--text2); margin-top: 6px; }
+  .hero-formula { font-size: 11px; color: var(--text3); margin-top: 10px; line-height: 1.5; border-top: 0.5px solid var(--border); padding-top: 9px; }
 
   .daily-card {
     background: var(--bg); border: 0.5px solid var(--border);
@@ -99,26 +110,37 @@
   .daily-label { font-size: 12px; color: var(--text2); }
 
   .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 1rem; }
-  .metric-card { background: var(--bg2); border-radius: var(--radius); padding: 12px 14px; }
-  .metric-label { font-size: 11px; color: var(--text2); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
-  .metric-value { font-size: 19px; font-weight: 500; }
+  .metric-grid.grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .metric-card { background: var(--bg2); border-radius: var(--radius); padding: 12px 12px; }
+  .metric-label { font-size: 10.5px; color: var(--text2); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; display:flex; align-items:center; gap:3px; }
+  .metric-value { font-size: 17px; font-weight: 500; }
   .metric-sub { font-size: 11px; color: var(--text3); margin-top: 3px; }
 
   .rule-card {
     background: var(--bg); border: 0.5px solid var(--border);
     border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px;
   }
+  .rule-card.big { padding: 16px; border-radius: var(--radius-lg); margin-bottom: 1rem; }
   .rule-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
   .rule-chip { font-size: 11px; padding: 2px 9px; border-radius: 99px; font-weight: 500; border: 0.5px solid; }
   .rule-amounts { display: flex; justify-content: space-between; font-size: 12px; color: var(--text2); margin-bottom: 6px; }
   .progress-bar { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
   .progress-fill { height: 100%; border-radius: 99px; transition: width 0.4s; }
+  .rule-note { font-size: 11.5px; color: var(--text2); margin-top: 8px; line-height: 1.45; }
 
   .alert-box {
     border-radius: var(--radius); padding: 12px 14px;
     font-size: 13px; line-height: 1.55; margin-bottom: 1rem;
     border: 0.5px solid; display: flex; gap: 10px; align-items: flex-start;
   }
+  .alert-box.tight { margin-bottom: 10px; margin-top: 10px; }
+
+  .subbar-list { display:flex; flex-direction:column; gap:7px; margin-top:10px; }
+  .subbar-row { display:flex; align-items:center; gap:8px; }
+  .subbar-name { font-size:11.5px; color:var(--text2); min-width:88px; flex-shrink:0; }
+  .subbar-track { flex:1; height:5px; background:var(--border); border-radius:99px; overflow:hidden; }
+  .subbar-fill { height:100%; border-radius:99px; }
+  .subbar-amt { font-size:11.5px; font-weight:500; min-width:56px; text-align:right; flex-shrink:0; }
 
   .top-cats { display: flex; flex-direction: column; gap: 9px; margin-bottom: 1rem; }
   .cat-row { display: flex; align-items: center; gap: 10px; }
@@ -149,6 +171,10 @@
     border-color: var(--text2);
   }
   .form-row textarea { min-height: 60px; resize: vertical; font-family: inherit; }
+  .form-row-inline { display:flex; gap:10px; }
+  .form-row-inline .form-row { flex:1; margin-bottom:0; }
+  .checkbox-row { display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--text2); }
+  .checkbox-row input { width:auto; }
 
   .auto-tag {
     background: var(--bg2); border-radius: var(--radius);
@@ -168,6 +194,18 @@
   }
   .btn-primary:active { opacity: 0.8; }
   .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-secondary {
+    width: 100%; padding: 11px; font-size: 13.5px; font-weight: 500;
+    background: var(--bg2); color: var(--text);
+    border: 0.5px solid var(--border2); border-radius: var(--radius); cursor: pointer;
+  }
+  .btn-small {
+    padding: 6px 12px; font-size: 12px; font-weight: 500;
+    background: var(--text); color: var(--bg);
+    border: none; border-radius: var(--radius); cursor: pointer; white-space:nowrap;
+  }
+  .btn-small.ghost { background: none; border: 0.5px solid var(--border2); color: var(--text); }
+  .btn-small:disabled { opacity:0.4; cursor:not-allowed; }
 
   .expense-list { display: flex; flex-direction: column; gap: 8px; }
   .expense-item {
@@ -201,6 +239,36 @@
   .prev-val { font-weight: 500; }
 
   .status-pill { font-size: 11px; padding: 3px 9px; border-radius: 99px; font-weight: 500; }
+
+  .fixed-row {
+    background: var(--bg); border: 0.5px solid var(--border);
+    border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px;
+  }
+  .fixed-row-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+  .fixed-name { font-size: 14px; font-weight: 500; }
+  .fixed-meta { font-size: 11px; color: var(--text2); margin-top: 2px; }
+  .fixed-amount { font-size: 15px; font-weight: 600; white-space:nowrap; }
+  .fixed-actions { display:flex; gap:6px; margin-top:10px; align-items:center; }
+  .badge { font-size: 10.5px; padding: 3px 8px; border-radius: 99px; font-weight: 500; white-space:nowrap; }
+  .badge.paid { background: var(--green-bg); color: var(--green-text); }
+  .badge.pending { background: var(--amber-bg); color: var(--amber-text); }
+  .badge.paused { background: var(--bg2); color: var(--text3); }
+
+  .recon-row { background: var(--bg); border:0.5px solid var(--border); border-radius: var(--radius); padding: 12px 14px; margin-bottom: 8px; }
+  .recon-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  .recon-name { font-size:13.5px; font-weight:500; }
+  .recon-grid { display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:8px; }
+  .recon-field-label { font-size:10.5px; color:var(--text2); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:3px; }
+  .recon-field-val { font-size:14px; font-weight:500; }
+  .recon-field input { width:100%; font-size:14px; padding:7px 9px; border:0.5px solid var(--border2); border-radius:var(--radius); background:var(--bg2); color:var(--text); }
+  .recon-diff { font-size:13px; font-weight:600; }
+  .recon-bottom { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+
+  .lock-icon { font-size:12px; }
+  .close-banner { border-radius: var(--radius-lg); padding:14px 16px; margin-bottom:1rem; border:0.5px solid; }
+  .compare-row { display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-bottom:0.5px solid var(--border); font-size:13px; line-height:1.5; }
+  .compare-row:last-child { border-bottom:none; }
+  .compare-icon { font-size:15px; flex-shrink:0; }
 </style>
 </head>
 <body>
@@ -213,6 +281,10 @@
     <button class="tab-btn" onclick="showTab('registro')" id="tab-registro">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
       Add
+    </button>
+    <button class="tab-btn" onclick="showTab('fixed')" id="tab-fixed">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>
+      Fixed
     </button>
     <button class="tab-btn" onclick="showTab('historial')" id="tab-historial">
       <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12h6M9 16h4"/></svg>
@@ -240,34 +312,28 @@
         <span id="sync-label">Connecting...</span>
       </div>
       <button class="sync-btn" onclick="syncFromSheets()">↻ Sync</button>
-      <span style="font-size:9px;color:var(--text3);margin-left:6px">v9</span>
+      <span style="font-size:9px;color:var(--text3);margin-left:6px">v10</span>
     </div>
+
+    <!-- 1. SAFE TO SPEND -->
+    <div id="hero-container"></div>
+
+    <!-- 2. MONTHLY SPENDING STATUS -->
     <div id="semaforo-container"></div>
-    <div class="daily-card">
-      <div class="daily-icon">📅</div>
-      <div>
-        <div class="daily-label">Available per day</div>
-        <div class="daily-amount" id="daily-budget">¥0</div>
-        <div class="daily-label" id="days-left-text"></div>
-      </div>
-    </div>
-    <div class="metric-grid">
-      <div class="metric-card"><div class="metric-label">Income</div><div class="metric-value">¥240,000</div></div>
-      <div class="metric-card"><div class="metric-label">Spent</div><div class="metric-value" id="total-spent">¥0</div></div>
-      <div class="metric-card"><div class="metric-label">Remaining</div><div class="metric-value" id="total-remaining">¥240,000</div></div>
-      <div class="metric-card"><div class="metric-label">Savings</div><div class="metric-value" id="savings-achieved">¥0</div><div class="metric-sub">goal ¥48,000</div></div>
-    </div>
-    <div class="section-title">50 / 20 / 30 rule</div>
-    <div id="rule-grid"></div>
-    <div class="section-title">Alert</div>
-    <div id="alert-container"></div>
-    <div class="section-title">Top 3 categories</div>
+
+    <!-- 3. FUN & FLEXIBLE -->
+    <div id="fun-container"></div>
+
+    <!-- 4. SPENT / FIXED / SAVINGS -->
+    <div class="metric-grid grid-3" id="stats-row"></div>
+
+    <!-- 5. NECESSARY -->
+    <div id="necessary-container"></div>
+
+    <!-- 6. CATEGORY DETAIL (compact) -->
+    <div class="section-title">Top categories</div>
     <div class="top-cats" id="top-cats"></div>
-    <div class="section-title">Spending breakdown</div>
-    <div style="position:relative; width:100%; height:230px;">
-      <canvas id="catChart" aria-label="Pie chart of spending by category"></canvas>
-    </div>
-    <div class="legend-grid" id="cat-legend"></div>
+    <div style="font-size:12px;color:var(--text2);margin-top:-6px;margin-bottom:1rem;">Full breakdown and charts are in <b>Summary</b>.</div>
   </div>
 
   <!-- ADD EXPENSE -->
@@ -281,9 +347,17 @@
     <div style="background:var(--bg2);border-radius:var(--radius);padding:10px 12px;margin-bottom:1rem;font-size:12px;color:var(--text2);">
       <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Budget rule reminder</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
-        <div style="display:flex;justify-content:space-between;gap:8px;"><span>🏠 <b>Necessary 50%</b> — groceries, household, health, transport, taxes</span><span style="font-weight:500;color:var(--text);white-space:nowrap">¥120,000</span></div>
+        <div style="display:flex;justify-content:space-between;gap:8px;"><span>🏠 <b>Necessary 50%</b> — groceries, household, health, transport, housing, taxes</span><span style="font-weight:500;color:var(--text);white-space:nowrap">¥120,000</span></div>
         <div style="display:flex;justify-content:space-between;gap:8px;"><span>💰 <b>Savings 20%</b> — savings deposit, NISA, ETF, iDeCo</span><span style="font-weight:500;color:var(--text);white-space:nowrap">¥48,000</span></div>
         <div style="display:flex;justify-content:space-between;gap:8px;"><span>🎉 <b>Fun 30%</b> — restaurants, hobby, clothing, other</span><span style="font-weight:500;color:var(--text);white-space:nowrap">¥72,000</span></div>
+      </div>
+    </div>
+    <div class="form-card" id="fixed-link-card" style="display:none;">
+      <div class="form-row" style="margin-bottom:0;">
+        <label class="form-label" for="inp-fixed-link">📎 This pays a pending fixed expense? <span style="font-size:11px;color:var(--text3)">(optional)</span></label>
+        <select id="inp-fixed-link" onchange="onFixedLinkChange()">
+          <option value="">— Not linked —</option>
+        </select>
       </div>
     </div>
     <div class="form-card">
@@ -300,11 +374,12 @@
         <select id="inp-cat">
           <option value="Groceries">🥦 Groceries — food at home</option>
           <option value="Household">🏠 Household — cleaning, hygiene</option>
+          <option value="Housing & Utilities">🏡 Housing & Utilities — rent, internet, phone</option>
           <option value="Restaurants">🍜 Restaurants — dining out, delivery</option>
           <option value="Health">💊 Health — doctor, pharmacy, gym</option>
           <option value="Clothing">👕 Clothing — clothes, shoes</option>
           <option value="Transport">🚃 Transport — train, bus, taxi</option>
-          <option value="Hobby / fun">🎮 Hobby / fun — entertainment, outings</option>
+          <option value="Hobby / fun">🎮 Hobby / fun — entertainment, outings, subscriptions</option>
           <option value="Taxes">📄 Taxes — insurance, admin, nenkin</option>
           <option value="Emergency">🚨 Emergency — unexpected expenses</option>
           <option value="Savings">🏦 Savings — deposit, reserve fund</option>
@@ -331,6 +406,67 @@
     <button class="btn-primary" id="save-btn" onclick="saveExpense()">✓ Save expense</button>
   </div>
 
+  <!-- FIXED EXPENSES -->
+  <div class="tab-content" id="content-fixed">
+    <div class="month-nav-row">
+      <div class="month-nav">
+        <button onclick="changeMonth(-1)">&#8249;</button>
+        <span class="month-title" id="fixed-month-label">—</span>
+        <button onclick="changeMonth(1)">&#8250;</button>
+      </div>
+    </div>
+    <div class="metric-grid" id="fixed-summary-row" style="margin-bottom:1rem;"></div>
+    <div class="section-title" style="margin-top:0">This month</div>
+    <div id="fixed-list"></div>
+    <div class="section-title" id="paused-title" style="display:none;">Paused</div>
+    <div id="fixed-list-paused"></div>
+    <button class="btn-secondary" style="margin-top:0.5rem;" onclick="toggleNewFixedForm()">+ Add fixed expense</button>
+    <div class="form-card" id="new-fixed-form" style="display:none; margin-top:1rem;">
+      <div class="form-row">
+        <label class="form-label" for="fx-name">Name</label>
+        <input type="text" id="fx-name" placeholder="e.g. Rent, Internet, Netflix">
+      </div>
+      <div class="form-row-inline">
+        <div class="form-row">
+          <label class="form-label" for="fx-amount">¥ Amount</label>
+          <input type="number" id="fx-amount" placeholder="120000" min="0" step="1" inputmode="numeric">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="fx-day">Due day</label>
+          <input type="number" id="fx-day" placeholder="27" min="1" max="31" inputmode="numeric">
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="fx-cat">Category</label>
+        <select id="fx-cat">
+          <option value="Housing & Utilities">🏡 Housing & Utilities — rent, internet, phone</option>
+          <option value="Taxes">📄 Taxes — insurance, admin, nenkin</option>
+          <option value="Health">💊 Health — gym membership</option>
+          <option value="Hobby / fun">🎮 Hobby / fun — subscriptions</option>
+          <option value="Household">🏠 Household</option>
+          <option value="Transport">🚃 Transport</option>
+          <option value="Other">📦 Other</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="fx-metodo">💳 Payment method</label>
+        <select id="fx-metodo">
+          <option value="Card">Card</option>
+          <option value="Cash">Cash</option>
+          <option value="Transfer">Transfer</option>
+          <option value="Suica / IC">Suica / IC</option>
+          <option value="PayPay">PayPay</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="fx-notes">Notes <span style="font-size:11px;color:var(--text3)">(optional)</span></label>
+        <input type="text" id="fx-notes" placeholder="e.g. shared with roommate">
+      </div>
+      <button class="btn-primary" onclick="saveFixedExpense()">✓ Save fixed expense</button>
+    </div>
+  </div>
+
   <!-- HISTORY -->
   <div class="tab-content" id="content-historial">
     <div class="month-nav-row">
@@ -348,8 +484,31 @@
 
   <!-- SUMMARY -->
   <div class="tab-content" id="content-resumen">
-    <div class="section-title" style="margin-top:0">Previous month</div>
-    <div class="prev-section" id="prev-summary"></div>
+    <div class="month-nav-row">
+      <div class="month-nav">
+        <button onclick="changeMonth(-1)">&#8249;</button>
+        <span class="month-title" id="resumen-month-label">—</span>
+        <button onclick="changeMonth(1)">&#8250;</button>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:0">Monthly close</div>
+    <div id="close-banner-container"></div>
+    <div id="recon-container"></div>
+    <div id="close-action-container" style="margin-bottom:1rem;"></div>
+
+    <div class="section-title">Monthly summary</div>
+    <div class="prev-section" id="month-summary"></div>
+
+    <div class="section-title">Vs. previous month</div>
+    <div class="prev-section" id="compare-summary"></div>
+
+    <div class="section-title">Spending breakdown</div>
+    <div style="position:relative; width:100%; height:210px;">
+      <canvas id="catChart" aria-label="Pie chart of spending by category"></canvas>
+    </div>
+    <div class="legend-grid" id="cat-legend"></div>
+
     <div class="section-title">Last 6 months — spending</div>
     <div style="position:relative; width:100%; height:180px; margin-bottom:1rem;">
       <canvas id="trendChart" aria-label="Bar chart of monthly spending"></canvas>
@@ -365,39 +524,50 @@
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwv3iXKCAsRcdRKmCznT3VB4FkFslGYzHFfGSzJmCeNNu0uS8cwXwiesAVOV3y178Jy/exec';
 const INCOME = 240000;
 const BUDGET = { necessary: 120000, savings: 48000, fun: 72000 };
-let currentYear, currentMonth, expenses = [];
+const SPENDABLE_POOL = INCOME - BUDGET.savings; // everything that isn't the protected savings goal
+const PAYMENT_METHODS = ['Card','Cash','Transfer','Suica / IC','PayPay','Other'];
+const RECON_TOLERANCE = 1; // yen — treat as matched within rounding
+
+let currentYear, currentMonth;
+let expenses = [], fixedExpenses = [], monthlyCloses = [], reconciliation = [];
 let catChartInst = null, trendChartInst = null, savingsChartInst = null;
 
 function pad(n) { return String(n).padStart(2,'0'); }
 function fmt(n) { return '¥' + Math.round(n).toLocaleString('ja-JP'); }
+function fmtSigned(n) { const r = Math.round(n); return (r<0?'-':'+') + '¥' + Math.abs(r).toLocaleString('ja-JP'); }
 
 const CATS = {
-  'Groceries':   { bg:'#E1F5EE', border:'#5DCAA5', text:'#085041', bar:'#5DCAA5' },
-  'Household':   { bg:'#E6F1FB', border:'#85B7EB', text:'#0C447C', bar:'#85B7EB' },
-  'Restaurants': { bg:'#FBEAF0', border:'#ED93B1', text:'#72243E', bar:'#ED93B1' },
-  'Health':      { bg:'#EAF3DE', border:'#97C459', text:'#27500A', bar:'#97C459' },
-  'Clothing':    { bg:'#FAEEDA', border:'#EF9F27', text:'#633806', bar:'#EF9F27' },
-  'Transport':   { bg:'#EEEDFE', border:'#AFA9EC', text:'#3C3489', bar:'#AFA9EC' },
-  'Hobby / fun': { bg:'#FAECE7', border:'#F0997B', text:'#712B13', bar:'#F0997B' },
-  'Taxes':       { bg:'#F1EFE8', border:'#B4B2A9', text:'#444441', bar:'#B4B2A9' },
-  'Emergency':   { bg:'#FCEBEB', border:'#F09595', text:'#791F1F', bar:'#F09595' },
-  'Savings':     { bg:'#E1F5EE', border:'#1D9E75', text:'#04342C', bar:'#1D9E75' },
-  'Investments': { bg:'#EEEDFE', border:'#7F77DD', text:'#26215C', bar:'#7F77DD' },
-  'Other':       { bg:'#F1EFE8', border:'#888780', text:'#2C2C2A', bar:'#888780' }
+  'Groceries':          { bg:'#E1F5EE', border:'#5DCAA5', text:'#085041', bar:'#5DCAA5' },
+  'Household':          { bg:'#E6F1FB', border:'#85B7EB', text:'#0C447C', bar:'#85B7EB' },
+  'Housing & Utilities':{ bg:'#DCEEF7', border:'#4FA8C9', text:'#0B3D4C', bar:'#4FA8C9' },
+  'Restaurants':        { bg:'#FBEAF0', border:'#ED93B1', text:'#72243E', bar:'#ED93B1' },
+  'Health':             { bg:'#EAF3DE', border:'#97C459', text:'#27500A', bar:'#97C459' },
+  'Clothing':           { bg:'#FAEEDA', border:'#EF9F27', text:'#633806', bar:'#EF9F27' },
+  'Transport':          { bg:'#EEEDFE', border:'#AFA9EC', text:'#3C3489', bar:'#AFA9EC' },
+  'Hobby / fun':        { bg:'#FAECE7', border:'#F0997B', text:'#712B13', bar:'#F0997B' },
+  'Taxes':              { bg:'#F1EFE8', border:'#B4B2A9', text:'#444441', bar:'#B4B2A9' },
+  'Emergency':          { bg:'#FCEBEB', border:'#F09595', text:'#791F1F', bar:'#F09595' },
+  'Savings':            { bg:'#E1F5EE', border:'#1D9E75', text:'#04342C', bar:'#1D9E75' },
+  'Investments':        { bg:'#EEEDFE', border:'#7F77DD', text:'#26215C', bar:'#7F77DD' },
+  'Other':              { bg:'#F1EFE8', border:'#888780', text:'#2C2C2A', bar:'#888780' }
 };
 const CAT_TYPES = {
-  'Groceries':'Necessary','Household':'Necessary','Health':'Necessary','Transport':'Necessary','Taxes':'Necessary',
+  'Groceries':'Necessary','Household':'Necessary','Housing & Utilities':'Necessary','Health':'Necessary','Transport':'Necessary','Taxes':'Necessary',
   'Restaurants':'Fun','Hobby / fun':'Fun','Clothing':'Flexible','Other':'Flexible',
   'Emergency':'Unexpected','Savings':'Savings','Investments':'Savings'
 };
+// Sub-categories shown in the Fun & Flexible breakdown card
+const FUN_SUBCATS = ['Restaurants','Hobby / fun','Clothing','Other'];
+
 const KEYWORDS = [
   { words:['supermarket','grocery','groceries','vegetable','vegetables','fruit','meat','egg','eggs','bread','milk','rice','pasta','tofu','miso','seiyu','aeon','ito','maruetsu','life store'], cat:'Groceries', nat:'Necessary', nota:'Basic food expense' },
   { words:['soap','toilet paper','detergent','shampoo','cleaning','hygiene','disinfectant','broom','daiso','household','paper towel'], cat:'Household', nat:'Necessary', nota:'Home essentials' },
+  { words:['rent','landlord','apartment','housing','internet','wifi','router','phone bill','mobile plan','docomo','softbank','au','rakuten mobile','electricity','gas bill','water bill','utility','utilities'], cat:'Housing & Utilities', nat:'Necessary', nota:'Housing & utilities' },
   { words:['cafe','coffee','restaurant','delivery','uber eats','menu','demae','sushi','ramen','pizza','mcdonalds','starbucks','izakaya','kaiten','yoshinoya','matsuya','sukiya','gusto','denny'], cat:'Restaurants', nat:'Fun', nota:'Dining out — enjoyment' },
   { words:['doctor','medicine','pharmacy','gym','protein','supplement','hospital','clinic','dentist','massage','yakkyoku','drugstore','matsumoto','wellness','health'], cat:'Health', nat:'Necessary', nota:'Health & wellness' },
   { words:['train','bus','taxi','metro','suica','pasmo','transport','gasoline','fuel','jr','tokyu','keio','odakyu'], cat:'Transport', nat:'Necessary', nota:'Daily commuting' },
   { words:['clothes','clothing','shoes','sneakers','uniqlo','gu','zara','h&m','muji','accessories','bag','wallet','shirt','pants'], cat:'Clothing', nat:'Flexible', nota:'Clothing & accessories' },
-  { words:['cinema','movie','game','hobby','cosmetics','book','trip','travel','outing','nintendo','steam','spotify','netflix','amazon prime','museum','concert','event','fun','entertainment'], cat:'Hobby / fun', nat:'Fun', nota:'Entertainment & hobbies' },
+  { words:['cinema','movie','game','hobby','cosmetics','book','trip','travel','outing','nintendo','steam','spotify','netflix','amazon prime','museum','concert','event','fun','entertainment','subscription'], cat:'Hobby / fun', nat:'Fun', nota:'Entertainment & hobbies' },
   { words:['tax','visa','document','administration','insurance','nenkin','shakai','resident','certificate','municipality'], cat:'Taxes', nat:'Necessary', nota:'Administrative expense' },
   { words:['repair','emergency','unexpected','breakdown','accident','plumber','urgent'], cat:'Emergency', nat:'Unexpected', nota:'Unplanned expense' },
   { words:['investment','invest','etf','stock','stocks','mutual fund','nisa','ideco','index fund','crypto','bitcoin','brokerage','sbi','rakuten securities','monex','portfolio'], cat:'Investments', nat:'Savings', nota:'Investment contribution' },
@@ -416,14 +586,10 @@ function classify(desc) {
 function autoClassify() {
   const desc = document.getElementById('inp-desc').value.trim();
   const tag = document.getElementById('auto-tag');
+  if (!tag) return;
   if (!desc) { tag.classList.remove('visible'); return; }
   const r = classify(desc);
-  document.getElementById('at-cat').textContent = r.cat;
-  document.getElementById('at-tipo').textContent = r.tipo;
-  document.getElementById('at-nat').textContent = r.nat;
-  document.getElementById('at-nota').textContent = r.nota;
   tag.classList.add('visible');
-  // sync dropdown
   const sel = document.getElementById('inp-cat');
   if (sel) sel.value = r.cat;
 }
@@ -443,6 +609,45 @@ function setSyncStatus(status, msg) {
   });
 }
 
+function normalizeExpenseRow(r) {
+  var fecha = String(r.fecha);
+  if (fecha.indexOf('T') !== -1) fecha = fecha.substring(0, 10);
+  return {
+    id: String(r.id), fecha: fecha, desc: String(r.desc),
+    monto: parseFloat(r.monto)||0, metodo: String(r.metodo),
+    cat: String(r.cat), tipo: String(r.tipo), nat: String(r.nat),
+    fixedId: r.fixedId ? String(r.fixedId) : ''
+  };
+}
+
+function normalizeFixed(r) {
+  return {
+    id: String(r.id), name: String(r.name), category: String(r.category),
+    amount: parseFloat(r.amount)||0, metodo: String(r.metodo),
+    day: parseInt(r.day,10)||1, active: (r.active===true||r.active==='TRUE'||r.active===true||String(r.active).toLowerCase()==='true'),
+    tipo: String(r.tipo||CAT_TYPES[r.category]||'Necessary'), notes: String(r.notes||'')
+  };
+}
+
+function normalizeClose(r) {
+  return {
+    monthKey: String(r.monthKey), closedAt: String(r.closedAt||''),
+    income: parseFloat(r.income)||0, totalSpent: parseFloat(r.totalSpent)||0,
+    totalNecessary: parseFloat(r.totalNecessary)||0, totalFun: parseFloat(r.totalFun)||0,
+    totalSavings: parseFloat(r.totalSavings)||0, savingsRatePct: parseFloat(r.savingsRatePct)||0,
+    status: String(r.status||'closed')
+  };
+}
+
+function normalizeRecon(r) {
+  return {
+    monthKey: String(r.monthKey), metodo: String(r.metodo),
+    statementTotal: r.statementTotal===''||r.statementTotal===undefined||r.statementTotal===null ? null : parseFloat(r.statementTotal),
+    updatedAt: String(r.updatedAt||''),
+    acknowledged: (r.acknowledged===true||String(r.acknowledged).toLowerCase()==='true')
+  };
+}
+
 function syncFromSheets() {
   return new Promise(function(resolve) {
     setSyncStatus('loading', 'Syncing...');
@@ -453,18 +658,14 @@ function syncFromSheets() {
       setSyncStatus('err', 'Timed out - tap Sync to retry');
       resolve();
     }, 12000);
-    window._jsonpCallback = function(rows) {
+    window._jsonpCallback = function(payload) {
       clearTimeout(window._syncTimeout);
       try {
-        expenses = rows.map(function(r) {
-          var fecha = String(r.fecha);
-          if (fecha.indexOf('T') !== -1) fecha = fecha.substring(0, 10);
-          return {
-            id: String(r.id), fecha: fecha, desc: String(r.desc),
-            monto: parseFloat(r.monto)||0, metodo: String(r.metodo),
-            cat: String(r.cat), tipo: String(r.tipo), nat: String(r.nat)
-          };
-        }).filter(function(e){ return e.fecha && e.monto > 0; });
+        var rows = Array.isArray(payload) ? payload : (payload.expenses||[]);
+        expenses = rows.map(normalizeExpenseRow).filter(function(e){ return e.fecha && e.monto > 0; });
+        fixedExpenses = ((payload && payload.fixedExpenses) || []).map(normalizeFixed).filter(function(f){ return f.id; });
+        monthlyCloses = ((payload && payload.monthlyCloses) || []).map(normalizeClose).filter(function(c){ return c.monthKey; });
+        reconciliation = ((payload && payload.reconciliation) || []).map(normalizeRecon).filter(function(r){ return r.monthKey && r.metodo; });
         var now = new Date();
         setSyncStatus('ok', 'Synced - ' + now.getHours() + ':' + pad(now.getMinutes()));
         renderAll();
@@ -485,6 +686,10 @@ function syncFromSheets() {
   });
 }
 
+function postAction(body) {
+  return fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify(body), headers:{'Content-Type':'text/plain'}, mode:'no-cors', redirect:'follow' });
+}
+
 async function saveExpense() {
   const fecha = document.getElementById('inp-fecha').value;
   const monto = parseFloat(document.getElementById('inp-monto').value);
@@ -494,16 +699,18 @@ async function saveExpense() {
   const r = classify(desc);
   const selectedCat = document.getElementById('inp-cat').value;
   const finalCat = selectedCat || r.cat;
-  const expense = { id: Date.now(), fecha, desc, monto, metodo, cat: finalCat, tipo: CAT_TYPES[finalCat]||'Flexible', nat: r.nat, nota: r.nota };
+  const fixedId = document.getElementById('inp-fixed-link') ? document.getElementById('inp-fixed-link').value : '';
+  const expense = { id: Date.now(), fecha, desc, monto, metodo, cat: finalCat, tipo: CAT_TYPES[finalCat]||'Flexible', nat: r.nat, nota: r.nota, fixedId: fixedId||'' };
   const btn = document.getElementById('save-btn');
   btn.disabled = true; btn.textContent = 'Saving...';
   setSyncStatus('loading', 'Saving...');
   try {
-    await fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify({ action:'add', expense }), headers:{'Content-Type':'text/plain'}, mode:'no-cors', redirect:'follow' });
+    await postAction({ action:'add', expense });
     document.getElementById('inp-desc').value = '';
     document.getElementById('inp-monto').value = '';
     document.getElementById('inp-cat').value = 'Groceries';
-    document.getElementById('auto-tag').classList.remove('visible');
+    document.getElementById('inp-fixed-link').value = '';
+    const tag = document.getElementById('auto-tag'); if (tag) tag.classList.remove('visible');
     await syncFromSheets();
     showTab('dashboard');
   } catch(e) {
@@ -517,24 +724,73 @@ async function deleteExpense(id) {
   if (!confirm('Delete this expense?')) return;
   setSyncStatus('loading', 'Deleting...');
   try {
-    await fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify({ action:'delete', id: String(id) }), headers:{'Content-Type':'text/plain'}, mode:'no-cors', redirect:'follow' });
+    await postAction({ action:'delete', id: String(id) });
     await syncFromSheets();
   } catch(e) {
     setSyncStatus('err', 'Could not delete');
   }
 }
 
+function onFixedLinkChange() {
+  const sel = document.getElementById('inp-fixed-link');
+  if (!sel || !sel.value) return;
+  const def = fixedExpenses.find(f => f.id === sel.value);
+  if (!def) return;
+  const montoEl = document.getElementById('inp-monto');
+  if (!montoEl.value) montoEl.value = def.amount;
+  document.getElementById('inp-cat').value = def.category;
+  document.getElementById('inp-metodo').value = def.metodo;
+  const descEl = document.getElementById('inp-desc');
+  if (!descEl.value) descEl.value = def.name;
+}
+
+function populateFixedLinkOptions() {
+  const sel = document.getElementById('inp-fixed-link');
+  const card = document.getElementById('fixed-link-card');
+  if (!sel) return;
+  const now = new Date();
+  const status = getFixedStatusForMonth(now.getFullYear(), now.getMonth());
+  const pending = status.filter(s => s.def.active && s.status === 'pending');
+  sel.innerHTML = '<option value="">— Not linked —</option>' +
+    pending.map(s => '<option value="'+s.def.id+'">'+s.def.name+' ('+fmt(s.amount)+')</option>').join('');
+  if (card) card.style.display = pending.length ? 'block' : 'none';
+}
+
 function getMonthKey(y, m) { return y + '-' + pad(m+1); }
 function getMonthExpenses(y, m) { return expenses.filter(e => e.fecha && e.fecha.startsWith(getMonthKey(y, m))); }
+function getMonthClose(monthKey) { return monthlyCloses.find(c => c.monthKey === monthKey); }
+function isMonthClosed(monthKey) { const c = getMonthClose(monthKey); return !!c && c.status === 'closed'; }
+
+function getFixedStatusForMonth(y, m) {
+  const monthKey = getMonthKey(y, m);
+  const mes = getMonthExpenses(y, m);
+  return fixedExpenses.map(def => {
+    const linked = mes.find(e => e.fixedId && e.fixedId === def.id);
+    return {
+      def,
+      status: linked ? 'paid' : 'pending',
+      amount: linked ? linked.monto : def.amount,
+      linkedExpense: linked || null
+    };
+  });
+}
 
 function showTab(tab) {
-  ['dashboard','registro','historial','resumen'].forEach(t => {
+  ['dashboard','registro','fixed','historial','resumen'].forEach(t => {
     document.getElementById('content-'+t).classList.toggle('active', t===tab);
     document.getElementById('tab-'+t).classList.toggle('active', t===tab);
   });
   if (tab === 'registro') {
     const now = new Date();
     document.getElementById('inp-fecha').value = now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
+    populateFixedLinkOptions();
+  }
+  if (tab === 'resumen') {
+    // charts are created while this tab may have been hidden (display:none),
+    // which leaves Chart.js with a zero-size canvas — force a resize now that it's visible.
+    requestAnimationFrame(() => {
+      [catChartInst, trendChartInst, savingsChartInst].forEach(c => { if (c) { c.resize(); c.update(); } });
+    });
   }
 }
 
@@ -551,79 +807,161 @@ function renderAll() {
   const now = new Date();
   const isCurrent = (currentYear === now.getFullYear() && currentMonth === now.getMonth());
   const label = MN[currentMonth] + ' ' + currentYear;
-  ['month-label','hist-month-label'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = label; });
+  ['month-label','hist-month-label','fixed-month-label','resumen-month-label'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = label; });
 
+  const monthKey = getMonthKey(currentYear, currentMonth);
   const mes = getMonthExpenses(currentYear, currentMonth);
   const totalSpent = mes.reduce((s,e)=>s+e.monto,0);
-  const remaining = INCOME - totalSpent;
   const daysInMonth = new Date(currentYear, currentMonth+1, 0).getDate();
   const today = isCurrent ? now.getDate() : daysInMonth;
   const daysLeft = Math.max(daysInMonth - today + 1, 1);
-  const spendable = INCOME - BUDGET.savings;
-  const dailyBudget = Math.max((spendable - totalSpent) / daysLeft, 0);
-  const pctSpent = Math.round((totalSpent / spendable) * 100);
-  const spentRatio = totalSpent / spendable;
   const expectedRatio = today / daysInMonth;
-  const actualSavings = remaining >= BUDGET.savings ? BUDGET.savings : Math.max(remaining, 0);
 
+  const fixedStatus = getFixedStatusForMonth(currentYear, currentMonth).filter(s => s.def.active);
+  const fixedPaidTotal = fixedStatus.filter(s=>s.status==='paid').reduce((s,x)=>s+x.amount,0);
+  const fixedPendingTotal = fixedStatus.filter(s=>s.status==='pending').reduce((s,x)=>s+x.amount,0);
+
+  // ---- 1. SAFE TO SPEND (item #2) ----
+  // Income − reserved savings − expenses already recorded − fixed expenses still pending
+  const safeToSpend = SPENDABLE_POOL - totalSpent - fixedPendingTotal;
+  const dailyAvailable = safeToSpend / daysLeft;
   document.getElementById('month-progress-text').textContent = 'Day ' + today + ' of ' + daysInMonth;
-  document.getElementById('total-spent').textContent = fmt(totalSpent);
-  document.getElementById('total-remaining').textContent = fmt(remaining);
-  document.getElementById('daily-budget').textContent = fmt(dailyBudget);
-  document.getElementById('days-left-text').textContent = daysLeft + ' days remaining';
-  document.getElementById('savings-achieved').textContent = fmt(actualSavings);
+  renderHero(safeToSpend, dailyAvailable, daysLeft, fixedPendingTotal);
 
-  let dotColor, statusText;
-  if (spentRatio <= expectedRatio * 0.9) { dotColor='#97C459'; statusText='On track — looking good'; }
-  else if (spentRatio <= 1.0) { dotColor='#EF9F27'; statusText='Caution — getting close'; }
-  else { dotColor='#F09595'; statusText='Over budget this month'; }
+  // ---- 2. MONTHLY SPENDING STATUS ----
+  const committedRatio = (totalSpent + fixedPendingTotal) / SPENDABLE_POOL;
+  renderSemaforo(committedRatio, expectedRatio, today, totalSpent, fixedPendingTotal);
 
-  document.getElementById('semaforo-container').innerHTML =
-    '<div class="semaforo-bar"><div class="semaforo-dot" style="background:'+dotColor+'"></div>' +
-    '<div><div style="font-size:14px;font-weight:500">'+statusText+'</div>' +
-    '<div style="font-size:12px;color:var(--text2)">Day '+today+' — '+pctSpent+'% of budget used</div></div></div>';
-
+  // ---- category totals for the month ----
   const catTotals = {};
   Object.keys(CATS).forEach(c => catTotals[c]=0);
   mes.forEach(e => { catTotals[e.cat] !== undefined ? catTotals[e.cat]+=e.monto : catTotals['Other']+=e.monto; });
 
   const necessary = mes.filter(e=>e.tipo==='Necessary').reduce((s,e)=>s+e.monto,0);
   const fun = mes.filter(e=>e.tipo==='Fun'||e.tipo==='Flexible').reduce((s,e)=>s+e.monto,0);
-  const savingsTotal = mes.filter(e=>e.tipo==='Savings').reduce((s,e)=>s+e.monto,0);
 
-  const rules = [
-    { name:'Necessary', budget:BUDGET.necessary, spent:necessary, pct:'50%', bg:'#E6F1FB', border:'#85B7EB', text:'#0C447C', bar:'#85B7EB' },
-    { name:'Savings & investments', budget:BUDGET.savings, spent:savingsTotal||actualSavings, pct:'20%', bg:'#E1F5EE', border:'#5DCAA5', text:'#085041', bar:'#5DCAA5' },
-    { name:'Fun & flexible', budget:BUDGET.fun, spent:fun, pct:'30%', bg:'#FBEAF0', border:'#ED93B1', text:'#72243E', bar:'#ED93B1' }
-  ];
-  document.getElementById('rule-grid').innerHTML = rules.map(r => {
-    const p = Math.min(Math.round((r.spent/r.budget)*100),100);
-    const over = r.spent > r.budget;
-    return '<div class="rule-card" style="border-left:3px solid '+r.border+'">' +
-      '<div class="rule-header"><span class="rule-chip" style="background:'+r.bg+';color:'+r.text+';border-color:'+r.border+'">'+r.name+'</span>' +
-      '<span style="font-size:12px;color:var(--text2)">'+r.pct+'</span></div>' +
-      '<div class="rule-amounts"><span><span style="font-weight:500">'+fmt(r.spent)+'</span> of '+fmt(r.budget)+'</span>' +
-      '<span style="font-size:12px;color:'+(over?'#A32D2D':'var(--text2)')+'">'+p+'%</span></div>' +
-      '<div class="progress-bar"><div class="progress-fill" style="width:'+p+'%;background:'+(over?'#F09595':r.bar)+'"></div></div></div>';
-  }).join('');
+  // ---- 3. FUN & FLEXIBLE (items #3, #14, #15) ----
+  renderFunCard(fun, catTotals);
+
+  // ---- 4. SPENT / FIXED / SAVINGS stats row ----
+  renderStatsRow(totalSpent, fixedPaidTotal, fixedPendingTotal);
+
+  // ---- 5. NECESSARY (item #4) ----
+  renderNecessaryCard(necessary, safeToSpend);
+
+  // ---- 6. Top categories (compact) ----
+  renderTopCats(catTotals);
+
+  // other tabs
+  renderHistorial(mes);
+  renderFixedTab(currentYear, currentMonth);
+  renderResumen(monthKey, mes, totalSpent, necessary, fun, catTotals);
+}
+
+function renderHero(safeToSpend, dailyAvailable, daysLeft, fixedPendingTotal) {
+  const over = safeToSpend < 0;
+  const borderColor = over ? 'var(--red)' : (safeToSpend < SPENDABLE_POOL*0.15 ? 'var(--amber)' : 'var(--green)');
+  const amountColor = over ? '#A32D2D' : 'var(--text)';
+  document.getElementById('hero-container').innerHTML =
+    '<div class="hero-card" style="border-left-color:'+borderColor+'">' +
+      '<div class="hero-label">💚 Safe to spend — rest of '+MN[currentMonth]+'</div>' +
+      '<div class="hero-amount" style="color:'+amountColor+'">'+ (over?'−':'') + fmt(Math.abs(safeToSpend)) +'</div>' +
+      '<div class="hero-sub">'+ (over
+        ? 'You\'re past your safe-to-spend line for this month.'
+        : fmt(Math.max(dailyAvailable,0)) + ' / day for the ' + daysLeft + ' day' + (daysLeft===1?'':'s') + ' left') + '</div>' +
+      '<div class="hero-formula">Income − ¥48,000 reserved savings − expenses already recorded' + (fixedPendingTotal>0 ? ' − '+fmt(fixedPendingTotal)+' in pending fixed expenses' : '') + '.</div>' +
+    '</div>';
+}
+
+function renderSemaforo(committedRatio, expectedRatio, today, totalSpent, fixedPendingTotal) {
+  let dotColor, statusText;
+  if (committedRatio <= expectedRatio * 0.9) { dotColor='#97C459'; statusText='On track — looking good'; }
+  else if (committedRatio <= 1.0) { dotColor='#EF9F27'; statusText='Caution — getting close'; }
+  else { dotColor='#F09595'; statusText='Over your safe-to-spend budget'; }
+  const pct = Math.round(committedRatio*100);
+  document.getElementById('semaforo-container').innerHTML =
+    '<div class="semaforo-bar">' +
+      '<div class="semaforo-top"><div class="semaforo-dot" style="background:'+dotColor+'"></div>' +
+      '<div><div style="font-size:14px;font-weight:500">'+statusText+'</div>' +
+      '<div style="font-size:12px;color:var(--text2)">Day '+today+' — '+pct+'% of this month\'s spendable budget committed'+(fixedPendingTotal>0?' (incl. pending fixed)':'')+'</div></div></div>' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:'+Math.min(pct,100)+'%;background:'+dotColor+'"></div></div>' +
+    '</div>';
+}
+
+function renderFunCard(fun, catTotals) {
+  const p = Math.min(Math.round((fun/BUDGET.fun)*100),100);
+  const pRaw = Math.round((fun/BUDGET.fun)*100);
+  const over = fun > BUDGET.fun;
+  const remaining = BUDGET.fun - fun;
+  const barColor = over ? '#F09595' : (pRaw>=90 ? '#EF9F27' : '#ED93B1');
 
   let alertMsg, alertBg, alertBorder, alertColor;
-  if (spentRatio > 1.0) {
-    alertMsg='You have exceeded the spendable budget. Pause flexible spending for the rest of the month.';
+  if (over) {
+    alertMsg = 'You\'ve gone '+fmt(Math.abs(remaining))+' over your Fun & flexible budget ('+pRaw+'% used) — restaurants, entertainment and other non-essentials should pause for the rest of the month.';
     alertBg='#FCEBEB'; alertBorder='#F09595'; alertColor='#791F1F';
-  } else if (spentRatio > expectedRatio*1.1) {
-    const topFun = Object.entries(catTotals).filter(([k])=>CAT_TYPES[k]==='Fun').sort((a,b)=>b[1]-a[1]);
-    const topCat = topFun[0] ? topFun[0][0] : 'flexible spending';
-    alertMsg='Spending faster than expected. "'+topCat+'" is high — consider slowing down.';
+  } else if (pRaw >= 90) {
+    alertMsg = 'Heads up — you\'ve used '+pRaw+'% of your Fun & flexible budget. '+fmt(remaining)+' left for restaurants and entertainment this month.';
     alertBg='#FAEEDA'; alertBorder='#EF9F27'; alertColor='#633806';
   } else {
-    alertMsg='Great pace. You can spend '+fmt(dailyBudget)+' per day and still meet your savings goal.';
+    alertMsg = fmt(remaining)+' left for restaurants, entertainment, clothing and other flexible spending this month.';
     alertBg='#EAF3DE'; alertBorder='#97C459'; alertColor='#27500A';
   }
-  document.getElementById('alert-container').innerHTML =
-    '<div class="alert-box" style="background:'+alertBg+';border-color:'+alertBorder+';color:'+alertColor+'">'+
-    '<span style="font-size:16px;flex-shrink:0">ℹ️</span><span>'+alertMsg+'</span></div>';
 
+  const maxSub = Math.max.apply(null, FUN_SUBCATS.map(c=>catTotals[c]||0).concat([1]));
+  const subbars = FUN_SUBCATS.map(c => {
+    const amt = catTotals[c]||0;
+    const cc = CATS[c];
+    return '<div class="subbar-row"><span class="subbar-name">'+c+'</span>' +
+      '<div class="subbar-track"><div class="subbar-fill" style="width:'+Math.round((amt/maxSub)*100)+'%;background:'+cc.bar+'"></div></div>' +
+      '<span class="subbar-amt">'+fmt(amt)+'</span></div>';
+  }).join('');
+
+  document.getElementById('fun-container').innerHTML =
+    '<div class="rule-card big" style="border-left:4px solid '+(over?'#F09595':'#ED93B1')+'">' +
+      '<div class="rule-header"><span class="rule-chip" style="background:#FBEAF0;color:#72243E;border-color:#ED93B1">🎉 Fun & flexible</span>' +
+      '<span style="font-size:12px;color:var(--text2)">30% guideline</span></div>' +
+      '<div class="rule-amounts"><span><span style="font-weight:600;font-size:15px;color:var(--text)">'+fmt(fun)+'</span> of '+fmt(BUDGET.fun)+'</span>' +
+      '<span style="font-size:12px;color:'+(over?'#A32D2D':'var(--text2)')+'">'+pRaw+'%</span></div>' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:'+p+'%;background:'+barColor+'"></div></div>' +
+      '<div class="alert-box tight" style="background:'+alertBg+';border-color:'+alertBorder+';color:'+alertColor+'">' +
+      '<span style="font-size:14px;flex-shrink:0">ℹ️</span><span style="font-size:12.5px;line-height:1.5">'+alertMsg+'</span></div>' +
+      '<div class="subbar-list">'+subbars+'</div>' +
+    '</div>';
+}
+
+function renderStatsRow(totalSpent, fixedPaidTotal, fixedPendingTotal) {
+  document.getElementById('stats-row').innerHTML =
+    '<div class="metric-card"><div class="metric-label">Spent</div><div class="metric-value">'+fmt(totalSpent)+'</div></div>' +
+    '<div class="metric-card"><div class="metric-label">Fixed</div><div class="metric-value" style="font-size:14px;">'+fmt(fixedPaidTotal)+' <span style="color:var(--text3);font-weight:400">paid</span></div><div class="metric-sub">'+fmt(fixedPendingTotal)+' pending</div></div>' +
+    '<div class="metric-card"><div class="metric-label">🔒 Savings</div><div class="metric-value">'+fmt(BUDGET.savings)+'</div><div class="metric-sub">reserved from day 1</div></div>';
+}
+
+function renderNecessaryCard(necessary, safeToSpend) {
+  const pRaw = Math.round((necessary/BUDGET.necessary)*100);
+  const p = Math.min(pRaw,100);
+  const overShare = necessary > BUDGET.necessary;
+  const overallOk = safeToSpend >= 0;
+  let barColor = '#85B7EB';
+  let note = '';
+  if (overShare && overallOk) {
+    barColor = '#EF9F27';
+    note = 'You\'re over the 50% guideline for Necessary, but total spending is still within your safe-to-spend budget — nothing to worry about.';
+  } else if (overShare && !overallOk) {
+    barColor = '#F09595';
+    note = 'Necessary spending is over its share and your overall safe-to-spend budget is also in the red — worth a look.';
+  }
+  document.getElementById('necessary-container').innerHTML =
+    '<div class="rule-card" style="border-left:3px solid '+barColor+'">' +
+      '<div class="rule-header"><span class="rule-chip" style="background:#E6F1FB;color:#0C447C;border-color:#85B7EB">🏠 Necessary</span>' +
+      '<span style="font-size:12px;color:var(--text2)">50% guideline</span></div>' +
+      '<div class="rule-amounts"><span><span style="font-weight:500">'+fmt(necessary)+'</span> of '+fmt(BUDGET.necessary)+'</span>' +
+      '<span style="font-size:12px;color:var(--text2)">'+pRaw+'%</span></div>' +
+      '<div class="progress-bar"><div class="progress-fill" style="width:'+p+'%;background:'+barColor+'"></div></div>' +
+      (note ? '<div class="rule-note">'+note+'</div>' : '') +
+    '</div>';
+}
+
+function renderTopCats(catTotals) {
   const sorted = Object.entries(catTotals).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
   const top3 = sorted.slice(0,3);
   const maxTop = top3[0] ? top3[0][1] : 1;
@@ -634,27 +972,6 @@ function renderAll() {
       '<div class="cat-bar-wrap"><div class="cat-bar-fill" style="width:'+Math.round((amt/maxTop)*100)+'%;background:'+c.bar+'"></div></div>' +
       '<span class="cat-amount">'+fmt(amt)+'</span></div>';
   }).join('') : '<p style="font-size:13px;color:var(--text2);padding:8px 0">No expenses recorded this month</p>';
-
-  if (catChartInst) { catChartInst.destroy(); catChartInst=null; }
-  const legend = document.getElementById('cat-legend');
-  if (!sorted.length) { legend.innerHTML='<p style="font-size:13px;color:var(--text2);grid-column:span 2;padding:8px 0">No expenses yet</p>'; return; }
-
-  catChartInst = new Chart(document.getElementById('catChart').getContext('2d'), {
-    type:'pie',
-    data:{ labels:sorted.map(([k])=>k), datasets:[{ data:sorted.map(([,v])=>v), backgroundColor:sorted.map(([k])=>(CATS[k]||CATS['Other']).bg), borderColor:sorted.map(([k])=>(CATS[k]||CATS['Other']).bar), borderWidth:1.5 }] },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:ctx=>{ const pct=Math.round((ctx.parsed/totalSpent)*100); return ' '+ctx.label+': '+fmt(ctx.parsed)+' ('+pct+'%)'; }}} } }
-  });
-
-  legend.innerHTML = sorted.map(([cat,amt]) => {
-    const c = CATS[cat]||CATS['Other'];
-    const pct = Math.round((amt/totalSpent)*100);
-    return '<div class="legend-item"><span class="legend-swatch" style="background:'+c.bar+'"></span>' +
-      '<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+cat+'</span>' +
-      '<span class="legend-pct">'+pct+'%</span></div>';
-  }).join('');
-
-  renderHistorial(mes);
-  renderResumen();
 }
 
 function renderHistorial(mes) {
@@ -670,9 +987,10 @@ function renderHistorial(mes) {
     const gid = 'cg'+cat.replace(/[^a-zA-Z0-9]/g,'');
     const rows = [...items].sort((a,b)=>b.fecha.localeCompare(a.fecha)).map(e => {
       const day = e.fecha ? e.fecha.substring(5).replace('-','/') : '';
+      const fixedBadge = e.fixedId ? '<span class="exp-badge" style="background:var(--bg2);border-color:var(--border2);color:var(--text2)">📎 fixed</span>' : '';
       return '<div class="expense-item" style="border-left:3px solid '+c.border+';margin-top:6px">'+
         '<div style="flex:1"><div class="expense-desc">'+e.desc+'</div>'+
-        '<div class="expense-meta">'+day+' · '+e.metodo+'</div></div>'+
+        '<div class="expense-meta">'+day+' · '+e.metodo+' '+fixedBadge+'</div></div>'+
         '<div style="text-align:right"><div class="expense-amount">'+fmt(e.monto)+'</div>'+
         '<button class="del-btn" onclick="deleteExpense(\'' + e.id + '\')">🗑</button></div></div>';
     }).join('');
@@ -698,45 +1016,324 @@ function toggleGroup(gid) {
   if (arr) arr.textContent = open ? '▼' : '▲';
 }
 
-function renderResumen() {
-  const now = new Date();
+// ---------------- FIXED EXPENSES TAB (items #5, #6, #7) ----------------
+
+function toggleNewFixedForm() {
+  const f = document.getElementById('new-fixed-form');
+  f.style.display = f.style.display === 'none' ? 'block' : 'none';
+}
+
+async function saveFixedExpense() {
+  const name = document.getElementById('fx-name').value.trim();
+  const amount = parseFloat(document.getElementById('fx-amount').value);
+  const day = parseInt(document.getElementById('fx-day').value,10) || 1;
+  const category = document.getElementById('fx-cat').value;
+  const metodo = document.getElementById('fx-metodo').value;
+  const notes = document.getElementById('fx-notes').value.trim();
+  if (!name || !amount || amount <= 0) { alert('Please fill in a name and amount.'); return; }
+  const fixed = { id: Date.now(), name, category, amount, metodo, day, active: true, tipo: CAT_TYPES[category]||'Necessary', notes };
+  try {
+    await postAction({ action:'addFixed', fixed });
+    document.getElementById('fx-name').value = '';
+    document.getElementById('fx-amount').value = '';
+    document.getElementById('fx-day').value = '';
+    document.getElementById('fx-notes').value = '';
+    toggleNewFixedForm();
+    await syncFromSheets();
+  } catch(e) { alert('Could not save — check connection'); }
+}
+
+async function toggleFixedActive(id, makeActive) {
+  try {
+    await postAction({ action:'updateFixed', id: id, fields: { active: makeActive } });
+    await syncFromSheets();
+  } catch(e) { alert('Could not update'); }
+}
+
+async function deleteFixed(id) {
+  if (!confirm('Delete this fixed expense definition? Past linked expenses stay in History.')) return;
+  try {
+    await postAction({ action:'deleteFixed', id: id });
+    await syncFromSheets();
+  } catch(e) { alert('Could not delete'); }
+}
+
+function openMarkPaid(id) {
+  const row = document.getElementById('markpaid-'+id);
+  if (row) row.style.display = row.style.display === 'none' ? 'flex' : 'none';
+}
+
+async function confirmMarkPaid(id) {
+  const def = fixedExpenses.find(f=>f.id===id);
+  if (!def) return;
+  const amountEl = document.getElementById('mp-amount-'+id);
+  const dateEl = document.getElementById('mp-date-'+id);
+  const monto = parseFloat(amountEl.value) || def.amount;
+  const fecha = dateEl.value;
+  if (!fecha || !monto) { alert('Please fill in date and amount.'); return; }
+  const r = classify(def.name);
+  const expense = { id: Date.now(), fecha, desc: def.name, monto, metodo: def.metodo, cat: def.category, tipo: CAT_TYPES[def.category]||def.tipo, nat: r.nat, nota: 'Fixed expense payment', fixedId: def.id };
+  try {
+    await postAction({ action:'add', expense });
+    await syncFromSheets();
+  } catch(e) { alert('Could not save — check connection'); }
+}
+
+function renderFixedTab(y, m) {
+  const status = getFixedStatusForMonth(y, m);
+  const active = status.filter(s=>s.def.active);
+  const paused = status.filter(s=>!s.def.active);
+  const paidTotal = active.filter(s=>s.status==='paid').reduce((s,x)=>s+x.amount,0);
+  const pendingTotal = active.filter(s=>s.status==='pending').reduce((s,x)=>s+x.amount,0);
+
+  document.getElementById('fixed-summary-row').innerHTML =
+    '<div class="metric-card"><div class="metric-label">Paid</div><div class="metric-value">'+fmt(paidTotal)+'</div></div>' +
+    '<div class="metric-card"><div class="metric-label">Remaining</div><div class="metric-value">'+fmt(pendingTotal)+'</div></div>';
+
+  const today = new Date().toISOString().substring(0,10);
+  function rowHtml(s) {
+    const def = s.def;
+    const c = CATS[def.category]||CATS['Other'];
+    const badge = s.status==='paid'
+      ? '<span class="badge paid">✓ Paid</span>'
+      : '<span class="badge pending">Pending</span>';
+    const action = s.status==='paid'
+      ? '<button class="btn-small ghost" onclick="deleteExpense(\''+s.linkedExpense.id+'\')">Undo</button>'
+      : '<button class="btn-small" onclick="openMarkPaid(\''+def.id+'\')">Mark as paid</button>';
+    const markPaidForm = s.status==='pending' ? (
+      '<div id="markpaid-'+def.id+'" style="display:none;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center;">' +
+        '<input type="date" id="mp-date-'+def.id+'" value="'+today+'" style="flex:1;min-width:120px;font-size:13px;padding:6px 8px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg2);color:var(--text);">' +
+        '<input type="number" id="mp-amount-'+def.id+'" value="'+def.amount+'" style="width:100px;font-size:13px;padding:6px 8px;border:0.5px solid var(--border2);border-radius:var(--radius);background:var(--bg2);color:var(--text);">' +
+        '<button class="btn-small" onclick="confirmMarkPaid(\''+def.id+'\')">Confirm</button>' +
+      '</div>') : '';
+    return '<div class="fixed-row" style="border-left:3px solid '+c.border+'">' +
+      '<div class="fixed-row-top"><div><div class="fixed-name">'+def.name+'</div>' +
+      '<div class="fixed-meta">'+def.category+' · '+def.metodo+' · due day '+def.day+'</div></div>' +
+      '<div class="fixed-amount">'+fmt(s.amount)+'</div></div>' +
+      '<div class="fixed-actions">'+badge+action+'<button class="btn-small ghost" onclick="deleteFixed(\''+def.id+'\')">Delete</button>' +
+      (s.status!=='paid' ? '<button class="btn-small ghost" onclick="toggleFixedActive(\''+def.id+'\', false)">Pause</button>' : '') +
+      '</div>' + markPaidForm +
+    '</div>';
+  }
+
+  const list = document.getElementById('fixed-list');
+  list.innerHTML = active.length ? active.map(rowHtml).join('') : '<div class="empty-state"><span class="empty-icon">📋</span>No fixed expenses yet — add rent, internet, phone, insurance or subscriptions below.</div>';
+
+  const pausedTitle = document.getElementById('paused-title');
+  const pausedList = document.getElementById('fixed-list-paused');
+  if (paused.length) {
+    pausedTitle.style.display = 'block';
+    pausedList.innerHTML = paused.map(s => {
+      const def = s.def; const c = CATS[def.category]||CATS['Other'];
+      return '<div class="fixed-row" style="border-left:3px solid '+c.border+';opacity:0.6">' +
+        '<div class="fixed-row-top"><div><div class="fixed-name">'+def.name+'</div>' +
+        '<div class="fixed-meta">'+def.category+' · '+def.metodo+'</div></div><div class="fixed-amount">'+fmt(def.amount)+'</div></div>' +
+        '<div class="fixed-actions"><span class="badge paused">Paused</span>' +
+        '<button class="btn-small ghost" onclick="toggleFixedActive(\''+def.id+'\', true)">Resume</button>' +
+        '<button class="btn-small ghost" onclick="deleteFixed(\''+def.id+'\')">Delete</button></div></div>';
+    }).join('');
+  } else {
+    pausedTitle.style.display = 'none';
+    pausedList.innerHTML = '';
+  }
+}
+
+// ---------------- MONTHLY CLOSE + RECONCILIATION (items #8, #9, #10, #11, #12) ----------------
+
+function methodsInPlay(monthKey, mes) {
+  const set = new Set();
+  mes.forEach(e => set.add(e.metodo));
+  reconciliation.filter(r=>r.monthKey===monthKey).forEach(r => set.add(r.metodo));
+  return Array.from(set);
+}
+
+async function saveReconRow(monthKey, metodo) {
+  const input = document.getElementById('recon-input-'+cssSafe(metodo));
+  const val = parseFloat(input.value);
+  if (isNaN(val)) { alert('Enter the statement total first.'); return; }
+  try {
+    await postAction({ action:'saveReconciliation', monthKey, metodo, statementTotal: val, acknowledged:false });
+    await syncFromSheets();
+  } catch(e) { alert('Could not save'); }
+}
+
+async function toggleReconAck(monthKey, metodo, checked) {
+  const existing = reconciliation.find(r=>r.monthKey===monthKey && r.metodo===metodo);
+  const statementTotal = existing && existing.statementTotal!==null ? existing.statementTotal : 0;
+  try {
+    await postAction({ action:'saveReconciliation', monthKey, metodo, statementTotal, acknowledged: checked });
+    await syncFromSheets();
+  } catch(e) { alert('Could not update'); }
+}
+
+function cssSafe(s) { return String(s).replace(/[^a-zA-Z0-9]/g,''); }
+
+async function closeMonth(monthKey, income, totalSpent, totalNecessary, totalFun, actualSavings, savingsRatePct) {
+  if (!confirm('Close ' + monthKeyLabel(monthKey) + '? This locks it in as the historical record.')) return;
+  try {
+    await postAction({ action:'closeMonth', close: { monthKey, income, totalSpent, totalNecessary, totalFun, totalSavings: actualSavings, savingsRatePct, status:'closed' } });
+    await syncFromSheets();
+  } catch(e) { alert('Could not close month'); }
+}
+
+async function reopenMonth(monthKey) {
+  if (!confirm('Reopen ' + monthKeyLabel(monthKey) + ' for edits?')) return;
+  try {
+    await postAction({ action:'reopenMonth', monthKey });
+    await syncFromSheets();
+  } catch(e) { alert('Could not reopen month'); }
+}
+
+function monthKeyLabel(monthKey) {
+  const [y,m] = monthKey.split('-');
+  return MN[parseInt(m,10)-1] + ' ' + y;
+}
+
+function renderResumen(monthKey, mes, totalSpent, necessary, fun, catTotals) {
+  const closed = isMonthClosed(monthKey);
+  const closeRecord = getMonthClose(monthKey);
+
+  // ---- close banner ----
+  const banner = document.getElementById('close-banner-container');
+  if (closed) {
+    banner.innerHTML = '<div class="close-banner" style="background:var(--green-bg);border-color:var(--green);color:var(--green-text)">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;">' +
+      '<span><span class="lock-icon">🔒</span> Closed on '+ (closeRecord.closedAt ? new Date(closeRecord.closedAt).toLocaleDateString() : '—') +'</span>' +
+      '<button class="btn-small ghost" onclick="reopenMonth(\''+monthKey+'\')">Reopen</button></div></div>';
+  } else {
+    banner.innerHTML = '<div class="close-banner" style="background:var(--bg2);border-color:var(--border2);color:var(--text2)">Open — not yet closed</div>';
+  }
+
+  // ---- reconciliation ----
+  const methods = methodsInPlay(monthKey, mes);
+  const reconEl = document.getElementById('recon-container');
+  let allOk = methods.length > 0;
+  if (!methods.length) {
+    reconEl.innerHTML = '<div class="empty-state" style="padding:1.5rem 0"><span class="empty-icon">💳</span>No expenses recorded this month yet to reconcile.</div>';
+  } else {
+    reconEl.innerHTML = methods.map(metodo => {
+      const appTotal = mes.filter(e=>e.metodo===metodo).reduce((s,e)=>s+e.monto,0);
+      const rec = reconciliation.find(r=>r.monthKey===monthKey && r.metodo===metodo);
+      const statementTotal = rec ? rec.statementTotal : null;
+      const hasStatement = statementTotal !== null && statementTotal !== undefined;
+      const diff = hasStatement ? (statementTotal - appTotal) : null;
+      const matched = hasStatement && Math.abs(diff) <= RECON_TOLERANCE;
+      const acknowledged = rec ? rec.acknowledged : false;
+      const rowOk = matched || acknowledged;
+      if (!rowOk) allOk = false;
+      const statusBadge = !hasStatement
+        ? '<span class="badge pending">Enter statement</span>'
+        : matched ? '<span class="badge paid">✓ Matches</span>'
+        : acknowledged ? '<span class="badge paused">Reviewed</span>'
+        : '<span class="badge pending">Needs review</span>';
+      return '<div class="recon-row">' +
+        '<div class="recon-top"><span class="recon-name">💳 '+metodo+'</span>'+statusBadge+'</div>' +
+        '<div class="recon-grid">' +
+          '<div class="recon-field"><div class="recon-field-label">App total</div><div class="recon-field-val">'+fmt(appTotal)+'</div></div>' +
+          '<div class="recon-field"><div class="recon-field-label">Statement total</div><input type="number" id="recon-input-'+cssSafe(metodo)+'" value="'+(hasStatement?statementTotal:'')+'" placeholder="e.g. 87920" '+(closed?'disabled':'')+'></div>' +
+        '</div>' +
+        '<div class="recon-bottom">' +
+          '<span class="recon-diff" style="color:'+(hasStatement ? (matched?'#27500A':'#A32D2D') : 'var(--text3)')+'">'+(hasStatement ? 'Diff: '+fmtSigned(diff) : 'Diff: —')+'</span>' +
+          (closed ? '' : '<div style="display:flex;gap:8px;align-items:center;">' +
+            (hasStatement && !matched ? '<label class="checkbox-row"><input type="checkbox" '+(acknowledged?'checked':'')+' onchange="toggleReconAck(\''+monthKey+'\',\''+metodo+'\',this.checked)"> OK</label>' : '') +
+            '<button class="btn-small" onclick="saveReconRow(\''+monthKey+'\',\''+metodo+'\')">Save</button></div>') +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // ---- close action ----
+  const actualSavings = INCOME - totalSpent;
+  const savingsRatePct = Math.round((actualSavings/INCOME)*100);
+  const closeAction = document.getElementById('close-action-container');
+  if (closed) {
+    closeAction.innerHTML = '';
+  } else {
+    const disabled = !allOk;
+    closeAction.innerHTML = '<button class="btn-primary" '+(disabled?'disabled':'')+' onclick="closeMonth(\''+monthKey+'\','+INCOME+','+totalSpent+','+necessary+','+fun+','+actualSavings+','+savingsRatePct+')">' +
+      (disabled ? '🔒 Resolve reconciliation to close '+MN[currentMonth] : '✓ Close ' + MN[currentMonth]) + '</button>' +
+      (disabled ? '<div style="font-size:11.5px;color:var(--text2);margin-top:6px;text-align:center;">Every payment method must match the statement, or be marked reviewed.</div>' : '');
+  }
+
+  // ---- monthly summary (item #11) ----
+  const topSorted = Object.entries(catTotals).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]).slice(0,3);
+  const overUnder = SPENDABLE_POOL - totalSpent;
+  const summarySource = closed ? closeRecord : { income:INCOME, totalSpent, totalNecessary:necessary, totalFun:fun, totalSavings:actualSavings, savingsRatePct };
+  document.getElementById('month-summary').innerHTML =
+    (!closed ? '<div style="font-size:11.5px;color:var(--text2);margin-bottom:8px;">Not yet closed — these numbers can still change.</div>' : '') +
+    '<div class="prev-row"><span class="prev-label">Income</span><span class="prev-val">'+fmt(summarySource.income)+'</span></div>' +
+    '<div class="prev-row"><span class="prev-label">Total spent</span><span class="prev-val">'+fmt(summarySource.totalSpent)+'</span></div>' +
+    '<div class="prev-row"><span class="prev-label">Necessary</span><span class="prev-val">'+fmt(summarySource.totalNecessary)+'</span></div>' +
+    '<div class="prev-row"><span class="prev-label">Fun & flexible</span><span class="prev-val">'+fmt(summarySource.totalFun)+'</span></div>' +
+    '<div class="prev-row"><span class="prev-label">'+(overUnder>=0?'Under budget by':'Over budget by')+'</span><span class="prev-val" style="color:'+(overUnder>=0?'#27500A':'#A32D2D')+'">'+fmt(Math.abs(overUnder))+'</span></div>' +
+    '<div class="prev-row"><span class="prev-label">Actual savings</span><span class="prev-val">'+fmt(summarySource.totalSavings)+' ('+summarySource.savingsRatePct+'%)</span></div>' +
+    '<div class="prev-row"><span class="prev-label">Top category</span><span class="prev-val">'+(topSorted[0]?topSorted[0][0]:'—')+'</span></div>';
+
+  // ---- comparison vs previous month (item #12) ----
+  renderComparison(catTotals, totalSpent);
+
+  // ---- charts ----
+  renderCatChart(catTotals, totalSpent);
+  renderTrendCharts();
+}
+
+function renderComparison(catTotals, totalSpent) {
   const prevY = currentMonth===0 ? currentYear-1 : currentYear;
   const prevM = currentMonth===0 ? 11 : currentMonth-1;
   const prevMes = getMonthExpenses(prevY, prevM);
-  const prevSpent = prevMes.reduce((s,e)=>s+e.monto,0);
-  const prevSavings = Math.min(Math.max(INCOME-prevSpent,0), BUDGET.savings);
-  const prevNecessary = prevMes.filter(e=>e.tipo==='Necessary').reduce((s,e)=>s+e.monto,0);
-  const prevFun = prevMes.filter(e=>e.tipo==='Fun'||e.tipo==='Flexible').reduce((s,e)=>s+e.monto,0);
-  const prevInv = prevMes.filter(e=>e.cat==='Investments').reduce((s,e)=>s+e.monto,0);
-  const prevDiv = document.getElementById('prev-summary');
-  const prevLabel = MN[prevM]+' '+prevY;
-
+  const el = document.getElementById('compare-summary');
   if (!prevMes.length) {
-    prevDiv.innerHTML='<div class="empty-state" style="padding:1rem 0"><span class="empty-icon">📅</span>No data for '+prevLabel+' yet</div>';
-  } else {
-    const ct={}; Object.keys(CATS).forEach(c=>ct[c]=0);
-    prevMes.forEach(e=>{ ct[e.cat]!==undefined?ct[e.cat]+=e.monto:ct['Other']+=e.monto; });
-    const top1 = Object.entries(ct).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1])[0];
-    const ok = prevSpent <= (INCOME-BUDGET.savings);
-    prevDiv.innerHTML =
-      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">' +
-      '<span style="font-size:13px;font-weight:500">'+prevLabel+'</span>' +
-      '<span class="status-pill" style="background:'+(ok?'#EAF3DE':'#FCEBEB')+';color:'+(ok?'#27500A':'#791F1F')+'">'+(ok?'Within budget':'Over budget')+'</span></div>' +
-      '<div class="prev-row"><span class="prev-label">Total spent</span><span class="prev-val">'+fmt(prevSpent)+'</span></div>' +
-      '<div class="prev-row"><span class="prev-label">Savings achieved</span><span class="prev-val">'+fmt(prevSavings)+' ('+Math.round((prevSavings/INCOME)*100)+'%)</span></div>' +
-      '<div class="prev-row"><span class="prev-label">Necessary</span><span class="prev-val">'+fmt(prevNecessary)+'</span></div>' +
-      '<div class="prev-row"><span class="prev-label">Fun & flexible</span><span class="prev-val">'+fmt(prevFun)+'</span></div>' +
-      '<div class="prev-row"><span class="prev-label">Investments</span><span class="prev-val">'+fmt(prevInv)+'</span></div>' +
-      '<div class="prev-row"><span class="prev-label">Top category</span><span class="prev-val">'+(top1?top1[0]:'—')+'</span></div>' +
-      '<div class="prev-row"><span class="prev-label">No. of expenses</span><span class="prev-val">'+prevMes.length+'</span></div>';
+    el.innerHTML = '<div class="empty-state" style="padding:1rem 0"><span class="empty-icon">📅</span>No data for '+MN[prevM]+' '+prevY+' to compare against.</div>';
+    return;
   }
+  const prevTotal = prevMes.reduce((s,e)=>s+e.monto,0);
+  const prevCat = {};
+  Object.keys(CATS).forEach(c=>prevCat[c]=0);
+  prevMes.forEach(e=>{ prevCat[e.cat]!==undefined?prevCat[e.cat]+=e.monto:prevCat['Other']+=e.monto; });
 
+  const totalDelta = totalSpent - prevTotal;
+  const rows = [];
+  rows.push({ icon: totalDelta<=0?'✅':'⚠️', text: 'Total spending: '+fmtSigned(totalDelta)+' vs '+MN[prevM]+' ('+fmt(totalSpent)+' vs '+fmt(prevTotal)+').' });
+
+  const deltas = Object.keys(CATS).map(c => ({ cat:c, delta: (catTotals[c]||0) - (prevCat[c]||0) })).filter(d=>Math.abs(d.delta) >= 500);
+  deltas.sort((a,b)=>b.delta-a.delta);
+  const biggestUp = deltas[0];
+  const biggestDown = deltas[deltas.length-1];
+  if (biggestUp && biggestUp.delta > 0) rows.push({ icon:'📈', text: fmtSigned(biggestUp.delta)+' on '+biggestUp.cat+' vs last month.' });
+  if (biggestDown && biggestDown.delta < 0 && biggestDown.cat !== (biggestUp&&biggestUp.cat)) rows.push({ icon:'📉', text: fmtSigned(biggestDown.delta)+' on '+biggestDown.cat+' vs last month.' });
+
+  el.innerHTML = rows.map(r => '<div class="compare-row"><span class="compare-icon">'+r.icon+'</span><span>'+r.text+'</span></div>').join('');
+}
+
+function renderCatChart(catTotals, totalSpent) {
+  const sorted = Object.entries(catTotals).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+  if (catChartInst) { catChartInst.destroy(); catChartInst=null; }
+  const legend = document.getElementById('cat-legend');
+  if (!sorted.length) { legend.innerHTML='<p style="font-size:13px;color:var(--text2);grid-column:span 2;padding:8px 0">No expenses yet</p>'; return; }
+
+  catChartInst = new Chart(document.getElementById('catChart').getContext('2d'), {
+    type:'pie',
+    data:{ labels:sorted.map(([k])=>k), datasets:[{ data:sorted.map(([,v])=>v), backgroundColor:sorted.map(([k])=>(CATS[k]||CATS['Other']).bg), borderColor:sorted.map(([k])=>(CATS[k]||CATS['Other']).bar), borderWidth:1.5 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{callbacks:{label:ctx=>{ const pct=Math.round((ctx.parsed/totalSpent)*100); return ' '+ctx.label+': '+fmt(ctx.parsed)+' ('+pct+'%)'; }}} } }
+  });
+
+  legend.innerHTML = sorted.map(([cat,amt]) => {
+    const c = CATS[cat]||CATS['Other'];
+    const pct = Math.round((amt/totalSpent)*100);
+    return '<div class="legend-item"><span class="legend-swatch" style="background:'+c.bar+'"></span>' +
+      '<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+cat+'</span>' +
+      '<span class="legend-pct">'+pct+'%</span></div>';
+  }).join('');
+}
+
+function renderTrendCharts() {
+  const now = new Date();
   const months6=[];
   for (let i=5;i>=0;i--) {
     let m=now.getMonth()-i, y=now.getFullYear();
     if(m<0){m+=12;y--;}
     const d=getMonthExpenses(y,m), sp=d.reduce((s,e)=>s+e.monto,0);
-    months6.push({ label:MN[m].substring(0,3), spent:sp, rate:Math.round((Math.min(Math.max(INCOME-sp,0),BUDGET.savings)/INCOME)*100) });
+    months6.push({ label:MN[m].substring(0,3), spent:sp, rate: Math.round(((INCOME-sp)/INCOME)*100) });
   }
 
   if(trendChartInst){trendChartInst.destroy();trendChartInst=null;}
@@ -744,14 +1341,14 @@ function renderResumen() {
 
   trendChartInst = new Chart(document.getElementById('trendChart').getContext('2d'), {
     type:'bar',
-    data:{ labels:months6.map(m=>m.label), datasets:[{ data:months6.map(m=>m.spent), backgroundColor:months6.map(m=>m.spent>(INCOME-BUDGET.savings)?'#F09595':'#B5D4F4'), borderWidth:0, borderRadius:4 }] },
+    data:{ labels:months6.map(m=>m.label), datasets:[{ data:months6.map(m=>m.spent), backgroundColor:months6.map(m=>m.spent>SPENDABLE_POOL?'#F09595':'#B5D4F4'), borderWidth:0, borderRadius:4 }] },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>fmt(ctx.parsed.y)}}}, scales:{ x:{grid:{display:false},ticks:{color:'#888780',font:{size:11}}}, y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{color:'#888780',font:{size:11},callback:v=>'¥'+(v/1000).toFixed(0)+'k'}} } }
   });
 
   savingsChartInst = new Chart(document.getElementById('savingsChart').getContext('2d'), {
     type:'line',
     data:{ labels:months6.map(m=>m.label), datasets:[{ data:months6.map(m=>m.rate), borderColor:'#5DCAA5', backgroundColor:'#E1F5EE', fill:true, tension:0.3, pointBackgroundColor:'#5DCAA5', pointRadius:4, borderWidth:2 }] },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'%'}}}, scales:{ x:{grid:{display:false},ticks:{color:'#888780',font:{size:11}}}, y:{min:0,max:30,grid:{color:'rgba(0,0,0,0.05)'},ticks:{color:'#888780',font:{size:11},callback:v=>v+'%'}} } }
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'%'}}}, scales:{ x:{grid:{display:false},ticks:{color:'#888780',font:{size:11}}}, y:{min:-20,max:40,grid:{color:'rgba(0,0,0,0.05)'},ticks:{color:'#888780',font:{size:11},callback:v=>v+'%'}} } }
   });
 }
 
